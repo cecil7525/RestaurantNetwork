@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a13bd2dbce80c9893cc1267eced95213 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_a13bd2dbce80c9893cc1267eced95213" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a13bd2dbce80c9893cc1267eced95213 = L.map(
+                "map_a13bd2dbce80c9893cc1267eced95213",
+                {
+                    center: [37.34314904615692, -92.54465739789214],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "maxBounds": null,
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d33f2af5b7628d5c06c57e06aec5bbf9 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d33f2af5b7628d5c06c57e06aec5bbf9.addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var marker_0ff5336de01ea08f77d901e70afd6802 = L.marker(
+                [49.2903006867, -123.1289233852],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_194f636bdd0f4fae19397cd1586a3ec4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_0ff5336de01ea08f77d901e70afd6802.setIcon(icon_194f636bdd0f4fae19397cd1586a3ec4);
+        
+    
+        var popup_0c791ddbddf3b855e495e1c0a961f766 = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_3e33d98dd2ddcc5fdffab80d2c508f79 = $(`<div id="html_3e33d98dd2ddcc5fdffab80d2c508f79" style="width: 100.0%; height: 100.0%;">Postal Code: V6G 3J2 Sentiment Score: 5.85</div>`)[0];
+                popup_0c791ddbddf3b855e495e1c0a961f766.setContent(html_3e33d98dd2ddcc5fdffab80d2c508f79);
+            
+        
+
+        marker_0ff5336de01ea08f77d901e70afd6802.bindPopup(popup_0c791ddbddf3b855e495e1c0a961f766)
+        ;
+
+        
+    
+    
+            var marker_118bf2ba13c1107d746c3d33db8bb17d = L.marker(
+                [49.280257302, -123.1202300284],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_30830fd07846612f726dfcb81974b6c1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_118bf2ba13c1107d746c3d33db8bb17d.setIcon(icon_30830fd07846612f726dfcb81974b6c1);
+        
+    
+        var popup_c1f075203fe8024b2de813b399ac6412 = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_41349279ad63879fb70f9f08907baa5f = $(`<div id="html_41349279ad63879fb70f9f08907baa5f" style="width: 100.0%; height: 100.0%;">Postal Code: V6B 3L4 Sentiment Score: 5.75</div>`)[0];
+                popup_c1f075203fe8024b2de813b399ac6412.setContent(html_41349279ad63879fb70f9f08907baa5f);
+            
+        
+
+        marker_118bf2ba13c1107d746c3d33db8bb17d.bindPopup(popup_c1f075203fe8024b2de813b399ac6412)
+        ;
+
+        
+    
+    
+            var marker_fea104a6ba244e8593f25923fbcdd2af = L.marker(
+                [49.1400926103, -123.1383247967],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_eba2387cca0ae957a82f24a24db15d14 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_fea104a6ba244e8593f25923fbcdd2af.setIcon(icon_eba2387cca0ae957a82f24a24db15d14);
+        
+    
+        var popup_2d8beee5737379e7e100a2b325e62723 = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_3f146ff47b4198b778ddc4475976c3fb = $(`<div id="html_3f146ff47b4198b778ddc4475976c3fb" style="width: 100.0%; height: 100.0%;">Postal Code: V7A 1G5 Sentiment Score: 5.73</div>`)[0];
+                popup_2d8beee5737379e7e100a2b325e62723.setContent(html_3f146ff47b4198b778ddc4475976c3fb);
+            
+        
+
+        marker_fea104a6ba244e8593f25923fbcdd2af.bindPopup(popup_2d8beee5737379e7e100a2b325e62723)
+        ;
+
+        
+    
+    
+            var marker_fd8846fe76c92c990ebc701c3f44cbe3 = L.marker(
+                [49.3266961, -123.07255359999998],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_afe4f8e1f5966e2d9048d32d61ca2697 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_fd8846fe76c92c990ebc701c3f44cbe3.setIcon(icon_afe4f8e1f5966e2d9048d32d61ca2697);
+        
+    
+        var popup_2c38ad5c0804ffe52b319135aecbb50a = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_6b9bf33af88c07ea45c73959544cdecf = $(`<div id="html_6b9bf33af88c07ea45c73959544cdecf" style="width: 100.0%; height: 100.0%;">Postal Code: V7M 2K3 Sentiment Score: 5.72</div>`)[0];
+                popup_2c38ad5c0804ffe52b319135aecbb50a.setContent(html_6b9bf33af88c07ea45c73959544cdecf);
+            
+        
+
+        marker_fd8846fe76c92c990ebc701c3f44cbe3.bindPopup(popup_2c38ad5c0804ffe52b319135aecbb50a)
+        ;
+
+        
+    
+    
+            var marker_34ee8abab743c359766043aa44869eae = L.marker(
+                [49.2568263, -123.1853421],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_8cc959fcd871a55f544fcb3e5398a2be = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_34ee8abab743c359766043aa44869eae.setIcon(icon_8cc959fcd871a55f544fcb3e5398a2be);
+        
+    
+        var popup_3cc370a3d6f80d8d6136d9597164cc1d = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_dbcc56b0d5f4ef6704da99671cd3c8d2 = $(`<div id="html_dbcc56b0d5f4ef6704da99671cd3c8d2" style="width: 100.0%; height: 100.0%;">Postal Code: V6S 2B9 Sentiment Score: 5.70</div>`)[0];
+                popup_3cc370a3d6f80d8d6136d9597164cc1d.setContent(html_dbcc56b0d5f4ef6704da99671cd3c8d2);
+            
+        
+
+        marker_34ee8abab743c359766043aa44869eae.bindPopup(popup_3cc370a3d6f80d8d6136d9597164cc1d)
+        ;
+
+        
+    
+    
+            var marker_3b8fdb6e7fc84be7363c7114b1c53a5c = L.marker(
+                [49.2829619533, -122.7934825006],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_34da246b596190a2d48920d73fc1b17e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_3b8fdb6e7fc84be7363c7114b1c53a5c.setIcon(icon_34da246b596190a2d48920d73fc1b17e);
+        
+    
+        var popup_9990eff9ec52ed6fba2bbc084b3ce1d4 = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_8b7f88d41016165555d0260a1f1f8978 = $(`<div id="html_8b7f88d41016165555d0260a1f1f8978" style="width: 100.0%; height: 100.0%;">Postal Code: V3B 0L8 Sentiment Score: 5.69</div>`)[0];
+                popup_9990eff9ec52ed6fba2bbc084b3ce1d4.setContent(html_8b7f88d41016165555d0260a1f1f8978);
+            
+        
+
+        marker_3b8fdb6e7fc84be7363c7114b1c53a5c.bindPopup(popup_9990eff9ec52ed6fba2bbc084b3ce1d4)
+        ;
+
+        
+    
+    
+            var marker_2bd0eef965c217ad6ae8cd2b0987443a = L.marker(
+                [49.3211427, -123.06972659999998],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_5e0998788b14f018a332ea34744c7f57 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_2bd0eef965c217ad6ae8cd2b0987443a.setIcon(icon_5e0998788b14f018a332ea34744c7f57);
+        
+    
+        var popup_7fa0fef4bc0f1d7c6aeac4f58a5706fd = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_11df67bb0a17ca6b6657817a454adac4 = $(`<div id="html_11df67bb0a17ca6b6657817a454adac4" style="width: 100.0%; height: 100.0%;">Postal Code: V7L 2N3 Sentiment Score: 5.69</div>`)[0];
+                popup_7fa0fef4bc0f1d7c6aeac4f58a5706fd.setContent(html_11df67bb0a17ca6b6657817a454adac4);
+            
+        
+
+        marker_2bd0eef965c217ad6ae8cd2b0987443a.bindPopup(popup_7fa0fef4bc0f1d7c6aeac4f58a5706fd)
+        ;
+
+        
+    
+    
+            var marker_377cd0f5e9e58f5e8c5e3911a5205955 = L.marker(
+                [49.3212052, -123.0716537],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_e77cf8e444064b7a1670306f6defdfbf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_377cd0f5e9e58f5e8c5e3911a5205955.setIcon(icon_e77cf8e444064b7a1670306f6defdfbf);
+        
+    
+        var popup_8b1fcd5e47d11398f67d05cd9e7977c5 = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_21c4d967e4880d33da31ba139c222d7b = $(`<div id="html_21c4d967e4880d33da31ba139c222d7b" style="width: 100.0%; height: 100.0%;">Postal Code: V7L 2N3 Sentiment Score: 5.69</div>`)[0];
+                popup_8b1fcd5e47d11398f67d05cd9e7977c5.setContent(html_21c4d967e4880d33da31ba139c222d7b);
+            
+        
+
+        marker_377cd0f5e9e58f5e8c5e3911a5205955.bindPopup(popup_8b1fcd5e47d11398f67d05cd9e7977c5)
+        ;
+
+        
+    
+    
+            var marker_bfbcd3ff89cce55456f64602cc48116d = L.marker(
+                [49.254865, -123.020418],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_b975397032bac490dbd9496028146009 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_bfbcd3ff89cce55456f64602cc48116d.setIcon(icon_b975397032bac490dbd9496028146009);
+        
+    
+        var popup_998df0c6cef1dba0306992bafaf88b67 = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_6c3fdc4dab06aa95b19d74e159a34566 = $(`<div id="html_6c3fdc4dab06aa95b19d74e159a34566" style="width: 100.0%; height: 100.0%;">Postal Code: V5G 4V4 Sentiment Score: 5.69</div>`)[0];
+                popup_998df0c6cef1dba0306992bafaf88b67.setContent(html_6c3fdc4dab06aa95b19d74e159a34566);
+            
+        
+
+        marker_bfbcd3ff89cce55456f64602cc48116d.bindPopup(popup_998df0c6cef1dba0306992bafaf88b67)
+        ;
+
+        
+    
+    
+            var marker_61be7a9eab65a13284c8211fd8609e59 = L.marker(
+                [28.197313887, -81.2953075393],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_db8928d36014c39243565e843105500b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_61be7a9eab65a13284c8211fd8609e59.setIcon(icon_db8928d36014c39243565e843105500b);
+        
+    
+        var popup_518e2981ae53013b588380d0f7ece26e = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_e75d7491dfb1b7b319b3d2b4a9783bcc = $(`<div id="html_e75d7491dfb1b7b319b3d2b4a9783bcc" style="width: 100.0%; height: 100.0%;">Postal Code: 34772 Sentiment Score: 5.68</div>`)[0];
+                popup_518e2981ae53013b588380d0f7ece26e.setContent(html_e75d7491dfb1b7b319b3d2b4a9783bcc);
+            
+        
+
+        marker_61be7a9eab65a13284c8211fd8609e59.bindPopup(popup_518e2981ae53013b588380d0f7ece26e)
+        ;
+
+        
+    
+    
+            var marker_7372e08fc5c2f981629743302849d522 = L.marker(
+                [49.167507, -122.801142],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_a6469cdaa69ea64455ce317cc51fdd29 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7372e08fc5c2f981629743302849d522.setIcon(icon_a6469cdaa69ea64455ce317cc51fdd29);
+        
+    
+        var popup_d17fa872369519cba0240fcf7e1fa877 = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_ad2dfd0e215599127f330f4d68d5cde1 = $(`<div id="html_ad2dfd0e215599127f330f4d68d5cde1" style="width: 100.0%; height: 100.0%;">Postal Code: V3R 4E7 Sentiment Score: 5.68</div>`)[0];
+                popup_d17fa872369519cba0240fcf7e1fa877.setContent(html_ad2dfd0e215599127f330f4d68d5cde1);
+            
+        
+
+        marker_7372e08fc5c2f981629743302849d522.bindPopup(popup_d17fa872369519cba0240fcf7e1fa877)
+        ;
+
+        
+    
+    
+            var marker_3edd073bc3bf256b468fc5291ef78466 = L.marker(
+                [49.2722528, -123.1359602],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_2be50eac8b72a282bc40d5f6b2a7c264 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_3edd073bc3bf256b468fc5291ef78466.setIcon(icon_2be50eac8b72a282bc40d5f6b2a7c264);
+        
+    
+        var popup_59570ecb46694d387c863c4a01ca5610 = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_1ba386d555de013083ad8f4bca0be5d1 = $(`<div id="html_1ba386d555de013083ad8f4bca0be5d1" style="width: 100.0%; height: 100.0%;">Postal Code: V6H 3Y2 Sentiment Score: 5.36</div>`)[0];
+                popup_59570ecb46694d387c863c4a01ca5610.setContent(html_1ba386d555de013083ad8f4bca0be5d1);
+            
+        
+
+        marker_3edd073bc3bf256b468fc5291ef78466.bindPopup(popup_59570ecb46694d387c863c4a01ca5610)
+        ;
+
+        
+    
+    
+            var marker_d794044901b4fa531c3adb328d3b850b = L.marker(
+                [49.2182794994, -123.077447],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_e2a26464d12c9cc4c36683d39d0f47b0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_d794044901b4fa531c3adb328d3b850b.setIcon(icon_e2a26464d12c9cc4c36683d39d0f47b0);
+        
+    
+        var popup_d98a0a0b8c4587a4ca56faea2aa1e68a = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_a520f376504fa7317608decafc07c5e8 = $(`<div id="html_a520f376504fa7317608decafc07c5e8" style="width: 100.0%; height: 100.0%;">Postal Code: V5P 2W9 Sentiment Score: 5.36</div>`)[0];
+                popup_d98a0a0b8c4587a4ca56faea2aa1e68a.setContent(html_a520f376504fa7317608decafc07c5e8);
+            
+        
+
+        marker_d794044901b4fa531c3adb328d3b850b.bindPopup(popup_d98a0a0b8c4587a4ca56faea2aa1e68a)
+        ;
+
+        
+    
+    
+            var marker_4346d3afb0d6b9a8f67ab57a127980b3 = L.marker(
+                [49.1929581, -123.1710687],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_ff331beed29af4454d319af0cf7e0f27 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_4346d3afb0d6b9a8f67ab57a127980b3.setIcon(icon_ff331beed29af4454d319af0cf7e0f27);
+        
+    
+        var popup_4223fbdd4416396aac38b3c0534fd880 = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_453c59ed855021099f1821b992eecc3b = $(`<div id="html_453c59ed855021099f1821b992eecc3b" style="width: 100.0%; height: 100.0%;">Postal Code: V7B 0A4 Sentiment Score: 5.36</div>`)[0];
+                popup_4223fbdd4416396aac38b3c0534fd880.setContent(html_453c59ed855021099f1821b992eecc3b);
+            
+        
+
+        marker_4346d3afb0d6b9a8f67ab57a127980b3.bindPopup(popup_4223fbdd4416396aac38b3c0534fd880)
+        ;
+
+        
+    
+    
+            var marker_ab189251da551fdc94556b5bf74db54c = L.marker(
+                [49.1951863, -123.1788712],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_ea8e652b236bbf32b1a9ee2d6b5826cc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_ab189251da551fdc94556b5bf74db54c.setIcon(icon_ea8e652b236bbf32b1a9ee2d6b5826cc);
+        
+    
+        var popup_229a8898491d15646977ce0abbca8d4a = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_29e45311260d0ac8259dcd2635ec037e = $(`<div id="html_29e45311260d0ac8259dcd2635ec037e" style="width: 100.0%; height: 100.0%;">Postal Code: V7B 0A4 Sentiment Score: 5.36</div>`)[0];
+                popup_229a8898491d15646977ce0abbca8d4a.setContent(html_29e45311260d0ac8259dcd2635ec037e);
+            
+        
+
+        marker_ab189251da551fdc94556b5bf74db54c.bindPopup(popup_229a8898491d15646977ce0abbca8d4a)
+        ;
+
+        
+    
+    
+            var marker_0af56189776433db4d467d441d081cf5 = L.marker(
+                [49.254865, -123.020418],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_d75cd2838aa7825d3d8e3889408b7d0b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_0af56189776433db4d467d441d081cf5.setIcon(icon_d75cd2838aa7825d3d8e3889408b7d0b);
+        
+    
+        var popup_3eed88148ce67783856875e52d9eb864 = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_44fc7a8f2c5a976883479341935b38a4 = $(`<div id="html_44fc7a8f2c5a976883479341935b38a4" style="width: 100.0%; height: 100.0%;">Postal Code: V5G 1G5 Sentiment Score: 5.35</div>`)[0];
+                popup_3eed88148ce67783856875e52d9eb864.setContent(html_44fc7a8f2c5a976883479341935b38a4);
+            
+        
+
+        marker_0af56189776433db4d467d441d081cf5.bindPopup(popup_3eed88148ce67783856875e52d9eb864)
+        ;
+
+        
+    
+    
+            var marker_2f3bd1f67520849791e678385f3c05dd = L.marker(
+                [49.2592934371, -122.9831876233],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_f725419d76bb0d8125ebf12b6330c3e5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_2f3bd1f67520849791e678385f3c05dd.setIcon(icon_f725419d76bb0d8125ebf12b6330c3e5);
+        
+    
+        var popup_ec336820500248f3a16bfbf5d2732d82 = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_71d6c780b426b1c3c30f10e7c6b69ac4 = $(`<div id="html_71d6c780b426b1c3c30f10e7c6b69ac4" style="width: 100.0%; height: 100.0%;">Postal Code: V5B 3A9 Sentiment Score: 5.35</div>`)[0];
+                popup_ec336820500248f3a16bfbf5d2732d82.setContent(html_71d6c780b426b1c3c30f10e7c6b69ac4);
+            
+        
+
+        marker_2f3bd1f67520849791e678385f3c05dd.bindPopup(popup_ec336820500248f3a16bfbf5d2732d82)
+        ;
+
+        
+    
+    
+            var marker_76b4093d46ae6d4f235d3615b67a8be2 = L.marker(
+                [49.2793435, -123.107433],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_77cacdd662ebf70fdd3ffffa12e94510 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_76b4093d46ae6d4f235d3615b67a8be2.setIcon(icon_77cacdd662ebf70fdd3ffffa12e94510);
+        
+    
+        var popup_ee8305f300d022a5824a4502301b9bde = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_cc18959c6bd60cf9cd2f803939190651 = $(`<div id="html_cc18959c6bd60cf9cd2f803939190651" style="width: 100.0%; height: 100.0%;">Postal Code: V6B 0E1 Sentiment Score: 5.35</div>`)[0];
+                popup_ee8305f300d022a5824a4502301b9bde.setContent(html_cc18959c6bd60cf9cd2f803939190651);
+            
+        
+
+        marker_76b4093d46ae6d4f235d3615b67a8be2.bindPopup(popup_ee8305f300d022a5824a4502301b9bde)
+        ;
+
+        
+    
+    
+            var marker_b6cd0f1631fdf6d996857a6382e29708 = L.marker(
+                [49.227613, -122.84021509999998],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_f0f8e14821738f0e6c8bb694677c7376 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_b6cd0f1631fdf6d996857a6382e29708.setIcon(icon_f0f8e14821738f0e6c8bb694677c7376);
+        
+    
+        var popup_3d014ad45f8ece883e9a0c72e30fb8cc = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_4b01ad20695949bfd3d4d529c25530d8 = $(`<div id="html_4b01ad20695949bfd3d4d529c25530d8" style="width: 100.0%; height: 100.0%;">Postal Code: V3K 6V5 Sentiment Score: 5.34</div>`)[0];
+                popup_3d014ad45f8ece883e9a0c72e30fb8cc.setContent(html_4b01ad20695949bfd3d4d529c25530d8);
+            
+        
+
+        marker_b6cd0f1631fdf6d996857a6382e29708.bindPopup(popup_3d014ad45f8ece883e9a0c72e30fb8cc)
+        ;
+
+        
+    
+    
+            var marker_659672a9fbbb7f80a0ef035077b29db8 = L.marker(
+                [49.2273604987, -123.0000868419],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_bc8b7b34daf1c6138dc92553ea033d64 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_659672a9fbbb7f80a0ef035077b29db8.setIcon(icon_bc8b7b34daf1c6138dc92553ea033d64);
+        
+    
+        var popup_051dc7dc22536e4c52528744960b262c = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_9cb7b98bffcd6ac59aaf42fd68fd3383 = $(`<div id="html_9cb7b98bffcd6ac59aaf42fd68fd3383" style="width: 100.0%; height: 100.0%;">Postal Code: V5H Sentiment Score: 5.34</div>`)[0];
+                popup_051dc7dc22536e4c52528744960b262c.setContent(html_9cb7b98bffcd6ac59aaf42fd68fd3383);
+            
+        
+
+        marker_659672a9fbbb7f80a0ef035077b29db8.bindPopup(popup_051dc7dc22536e4c52528744960b262c)
+        ;
+
+        
+    
+    
+            var marker_a598c9fab5852ef994bf592394fa1726 = L.marker(
+                [49.219468, -122.9683527],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_ddbe95088db235b2d91aa0094c66f395 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_a598c9fab5852ef994bf592394fa1726.setIcon(icon_ddbe95088db235b2d91aa0094c66f395);
+        
+    
+        var popup_6d03a620cdd570cc8172c5d4ad18dd3a = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_7b39de3b0cbec3fb213f8151656ad8c3 = $(`<div id="html_7b39de3b0cbec3fb213f8151656ad8c3" style="width: 100.0%; height: 100.0%;">Postal Code: V5E 1E1 Sentiment Score: 5.32</div>`)[0];
+                popup_6d03a620cdd570cc8172c5d4ad18dd3a.setContent(html_7b39de3b0cbec3fb213f8151656ad8c3);
+            
+        
+
+        marker_a598c9fab5852ef994bf592394fa1726.bindPopup(popup_6d03a620cdd570cc8172c5d4ad18dd3a)
+        ;
+
+        
+    
+    
+            var marker_68f40274a4d4a46c254c1c8dcd47b492 = L.marker(
+                [49.19847, -122.851331],
+                {
+  "draggable": null,
+  "autoPan": null,
+}
+            ).addTo(map_a13bd2dbce80c9893cc1267eced95213);
+        
+    
+            var icon_fe5cfda6bc50e42a482cc5f9151bcaf4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_68f40274a4d4a46c254c1c8dcd47b492.setIcon(icon_fe5cfda6bc50e42a482cc5f9151bcaf4);
+        
+    
+        var popup_f0d71d0929b447c0c49bf0fac0ba53b4 = L.popup({
+  "maxWidth": "100%",
+  "autoClose": null,
+  "closeOnClick": null,
+});
+
+        
+            
+                var html_54bdb062efe0dc4bc33a8f0c36587781 = $(`<div id="html_54bdb062efe0dc4bc33a8f0c36587781" style="width: 100.0%; height: 100.0%;">Postal Code: V3T 0E6 Sentiment Score: 5.30</div>`)[0];
+                popup_f0d71d0929b447c0c49bf0fac0ba53b4.setContent(html_54bdb062efe0dc4bc33a8f0c36587781);
+            
+        
+
+        marker_68f40274a4d4a46c254c1c8dcd47b492.bindPopup(popup_f0d71d0929b447c0c49bf0fac0ba53b4)
+        ;
+
+        
+    
+</script>
+</html>

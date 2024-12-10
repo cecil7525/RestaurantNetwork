@@ -5,14 +5,14 @@ Created on Wed Dec  4 17:55:09 2024
 @author: victorsobrino
 """
 
-import os
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import networkx as nx
+from cuisines_scrap import cuisine_scrap
+import folium
 
 # Load the CSV data
-path = 'RestaurantNetwork/'
 csv_file = 'filtered_reviews_with_communities.csv'
 data = pd.read_csv(csv_file)
 
@@ -99,6 +99,154 @@ We have to take into account that the highest value for sentiment (top 1) is 8.5
 Rank 1      --> laughter    8.5
 Rank 10222  --> terrorist   1.30
 """
+
+#%% Postal code
+
+grouped_data = data[['postal_code', 'sentiment_score']].groupby('postal_code').mean()
+sorted_data = grouped_data.sort_values('sentiment_score', ascending=False)
+
+# Display the top 10 happiest and saddest restaurants
+print("\nTop 10 Happiest Restaurants:")
+print(sorted_data['sentiment_score'].head(10))
+
+print("\nTop 10 Saddest Restaurants:")
+print(sorted_data['sentiment_score'].tail(10))
+
+#%%
+
+import matplotlib
+
+# Group by 'postal_code' and calculate the average sentiment score
+grouped_data = data[['postal_code', 'sentiment_score']].groupby('postal_code').mean()
+
+# Merge with original data to get 'latitude', 'longitude' for each postal_code
+# We assume the latitude and longitude are the same for each postal code
+grouped_with_coords = grouped_data.merge(
+    data[['postal_code', 'latitude', 'longitude']].drop_duplicates(), 
+    on='postal_code'
+)
+
+# Normalize the sentiment scores between 0 and 1 for color mapping
+min_score = grouped_with_coords['sentiment_score'].min()
+max_score = grouped_with_coords['sentiment_score'].max()
+grouped_with_coords['normalized_score'] = (grouped_with_coords['sentiment_score'] - min_score) / (max_score - min_score)
+
+# Function to map the normalized sentiment score to a color (green to red)
+cmap = matplotlib.cm.get_cmap('RdYlGn')  # Red to Green colormap
+
+def sentiment_to_color(normalized_score):
+    # Convert normalized score to RGB and then to hex
+    color = cmap(normalized_score)
+    return matplotlib.colors.rgb2hex(color[:3])
+
+# Create a map centered at an average location (mean of latitudes and longitudes)
+mean_latitude = data['latitude'].mean()
+mean_longitude = data['longitude'].mean()
+m = folium.Map(location=[mean_latitude, mean_longitude], zoom_start=2)
+
+# Add circle markers for each postal code with color based on average sentiment score
+for _, row in grouped_with_coords.iterrows():
+    folium.CircleMarker(
+        location=[row['latitude'], row['longitude']],
+        radius=5,  # Set a suitable radius for visibility
+        color=sentiment_to_color(row['normalized_score']),
+        fill=True,
+        fill_color=sentiment_to_color(row['normalized_score']),
+        fill_opacity=0.7,  # Adjust opacity for better visibility
+        popup=f"Postal Code: {row['postal_code']}\nAverage Sentiment Score: {row['sentiment_score']:.2f}"
+    ).add_to(m)
+
+# Save the map to an HTML file and display it
+m.save('postal_code_sentiment_map_simple.html')
+m
+
+
+
+#%%
+import matplotlib
+
+# Group by 'business_id' and calculate the average sentiment score
+grouped_data = data[['business_id', 'sentiment_score']].groupby('business_id').mean()
+
+# Merge with original data to get 'latitude', 'longitude', and 'name'
+grouped_with_coords = grouped_data.merge(
+    data[['business_id', 'latitude', 'longitude', 'name']].drop_duplicates(), 
+    on='business_id'
+)
+
+# Normalize the sentiment scores between 0 and 1 for color mapping
+min_score = grouped_with_coords['sentiment_score'].min()
+max_score = grouped_with_coords['sentiment_score'].max()
+grouped_with_coords['normalized_score'] = (grouped_with_coords['sentiment_score'] - min_score) / (max_score - min_score)
+
+# Function to map the normalized sentiment score to a color (green to red)
+cmap = matplotlib.cm.get_cmap('RdYlGn')  # Red to Green colormap
+
+def sentiment_to_color(normalized_score):
+    # Convert normalized score to RGB and then to hex
+    color = cmap(normalized_score)
+    return matplotlib.colors.rgb2hex(color[:3])
+
+# Create a map centered at an average location (mean of latitudes and longitudes)
+mean_latitude = data['latitude'].mean()
+mean_longitude = data['longitude'].mean()
+m = folium.Map(location=[mean_latitude, mean_longitude], zoom_start=2)
+
+# Add markers for each restaurant with color based on sentiment score
+for _, row in grouped_with_coords.iterrows():
+    folium.Marker(
+        location=[row['latitude'], row['longitude']],
+        popup=f"Name: {row['name']}\nSentiment Score: {row['sentiment_score']:.2f}",
+        icon=folium.Icon(color='white', icon_color=sentiment_to_color(row['normalized_score']), icon='info-sign')
+    ).add_to(m)
+
+# Save the map to an HTML file and display it
+m.save('all_restaurants_sentiment_map.html')
+m
+
+
+
+#%%
+
+
+# Group by postal_code and calculate mean sentiment_score
+grouped_data = data[['postal_code', 'sentiment_score']].groupby('postal_code').mean()
+sorted_data = grouped_data.sort_values('sentiment_score', ascending=False)
+
+# Get the top 10 happiest and saddest postal codes
+happiest = sorted_data.head(10)
+saddest = sorted_data.tail(10)
+
+# Merge to get latitude and longitude for the happiest and saddest
+happiest_with_coords = happiest.merge(data[['postal_code', 'latitude', 'longitude']].drop_duplicates(), on='postal_code')
+saddest_with_coords = saddest.merge(data[['postal_code', 'latitude', 'longitude']].drop_duplicates(), on='postal_code')
+
+# Create a map centered at an average location (mean of latitudes and longitudes)
+mean_latitude = data['latitude'].mean()
+mean_longitude = data['longitude'].mean()
+m = folium.Map(location=[mean_latitude, mean_longitude], zoom_start=2)
+
+# Add markers for the top 10 happiest restaurants
+for _, row in happiest_with_coords.iterrows():
+    folium.Marker(
+        location=[row['latitude'], row['longitude']],
+        popup=f"Postal Code: {row['postal_code']}\nSentiment Score: {row['sentiment_score']:.2f}",
+        icon=folium.Icon(color='green')
+    ).add_to(m)
+
+# Add markers for the top 10 saddest restaurants
+for _, row in saddest_with_coords.iterrows():
+    folium.Marker(
+        location=[row['latitude'], row['longitude']],
+        popup=f"Postal Code: {row['postal_code']}\nSentiment Score: {row['sentiment_score']:.2f}",
+        icon=folium.Icon(color='red')
+    ).add_to(m)
+
+# Save the map to an HTML file and display it
+m.save('happiest_saddest_restaurants_map.html')
+m
+
+
 #%% Categories
 
 # Split the categories into separate rows
@@ -179,37 +327,14 @@ correlation = data[['louvain_community', 'sentiment_score']].corr().iloc[0, 1]
 print(f"Correlation between sentiment score and louvain community: {correlation:.2f}")
 
 
-
-
-
-
-
-
-
-
-
 #%%
 
-# with open(path + filtered_raw_file, 'rb') as file:
-#     G = pickle.load(file)
+cuisines_wiki = cuisine_scrap()
+distinct_categories = list(data_expanded['categories'].unique())
 
-# # Get basic information about the graph
-# num_nodes = G.number_of_nodes()
-# num_edges = G.number_of_edges()
-
-# print(f"Number of nodes: {num_nodes}")
-# print(f"Number of edges: {num_edges}")
-
-
-# # Calculate degree for each node
-# degrees = [deg for _, deg in G.degree()]
-
-# # Plot the histogram
-# plt.figure(figsize=(10, 6))
-# plt.hist(degrees, bins=50, edgecolor='black', alpha=0.75)
-# plt.title("Degree Distribution")
-# plt.xlabel("Degree")
-# plt.ylabel("Frequency")
-# # plt.yscale('log')  # Use logarithmic scale for better visibility
-# plt.grid(True, which="both", linestyle='--', linewidth=0.5)
-# plt.show()
+count = 0
+for category in distinct_categories:
+    if category.lower() in cuisines_wiki or category.lower() + ' cuisine' in cuisines_wiki:
+        count += 1
+        
+print(f'Cuisines inside the wiki: {count}/{len(distinct_categories)}')
