@@ -100,6 +100,107 @@ Rank 1      --> laughter    8.5
 Rank 10222  --> terrorist   1.30
 """
 
+
+#%% Categories
+
+# Split the categories into separate rows
+data_expanded = data.assign(categories=data['categories'].str.split(', ')).explode('categories')
+
+# Group by category and calculate count, mean, and standard deviation of sentiment_score
+category_sentiment = data_expanded.groupby('categories').agg(
+    count=('categories', 'size'),
+    sentiment_score=('sentiment_score', 'mean'),
+    sentiment_score_sd=('sentiment_score', 'std'),
+    sentiment_score_min=('sentiment_score', 'min'),
+    sentiment_score_max=('sentiment_score', 'max')
+).reset_index()
+
+#%% Categories
+
+# Split the categories into separate rows
+data_expanded = data.assign(categories=data['categories'].str.split(', ')).explode('categories')
+
+# Group by category and calculate count, mean, and standard deviation of sentiment_score
+category_sentiment = data_expanded.groupby('categories').agg(
+    count=('business_id', 'nunique'),
+    sentiment_score=('sentiment_score', 'mean'),
+    sentiment_score_sd=('sentiment_score', 'std')
+    # sentiment_score_min=('sentiment_score', 'min'),
+    # sentiment_score_max=('sentiment_score', 'max')
+).reset_index()
+
+#%% plot to find optimal threshold
+
+# Set the threshold range (you can modify this as needed)
+threshold_range = range(1, 1000)
+
+# List to store the number of categories above each threshold
+num_categories = []
+
+# Loop through thresholds and count categories that meet the condition
+for threshold in threshold_range:
+    # Filter the categories with count >= threshold
+    filtered_categories = category_sentiment[category_sentiment['count'] >= threshold]
+    
+    # Append the number of categories to the list
+    num_categories.append(len(filtered_categories))
+
+# Plot the number of categories vs threshold
+plt.figure(figsize=(10, 6))
+plt.plot(threshold_range, num_categories, marker='o', linestyle='-', color='purple')
+plt.title("Number of Categories Above Threshold vs Threshold Value", fontweight='bold')
+plt.xlabel("Threshold (Minimum Number of Reviews)", fontweight='bold')
+plt.ylabel("Number of Categories", fontweight='bold')
+plt.grid(True)
+plt.show()
+
+#%% Top/Bottom 10 with that threshold
+
+threshold = 200
+filtered_categories = category_sentiment[category_sentiment['count'] >= threshold]
+sorted_data = filtered_categories.groupby('categories').mean().sort_values('sentiment_score', ascending=False)
+
+print("\nTop 10 Happiest Restaurants:")
+print(sorted_data.head(10))
+
+print("\nTop 10 Saddest Restaurants:")
+print(sorted_data.tail(10))
+
+#%% latex table
+
+for i in range(10):
+    print(f"{i+1} & {sorted_data.iloc[i].name} & {sorted_data['sentiment_score'].iloc[i].round(3)} & {i+1} & {sorted_data.iloc[-(i+1)].name} & {sorted_data['sentiment_score'].iloc[-(i+1)].round(3)} \\\ \hline")
+    # print(f"{i+1} & \multicolumn{{1}}{{l|}}{ {sorted_data.iloc[i].name} } & {sorted_data['sentiment_score'].iloc[i].round(3)} & {i+1} & \multicolumn{{1}}{{l|}}{ {sorted_data.iloc[-(i+1)].name} } & {sorted_data['sentiment_score'].iloc[-(i+1)].round(3)} \\\ \hline")
+
+
+#%% LKouvain analysis
+
+# Scatter plot for sentiment score and louvain_community
+plt.figure(figsize=(10, 6))
+plt.scatter(data['louvain_community'], data['sentiment_score'], alpha=0.6, color='mediumseagreen', edgecolor='black')
+plt.title("Sentiment Score vs Louvain Community", fontweight='bold')
+plt.xlabel("Louvain Community", fontweight='bold')
+plt.ylabel("Sentiment Score", fontweight='bold')
+plt.show()
+
+# Calculate the correlation between sentiment score and louvain_community
+correlation = data[['louvain_community', 'sentiment_score']].corr().iloc[0, 1]
+print(f"Correlation between sentiment score and louvain community: {correlation:.2f}")
+
+
+#%%
+
+cuisines_wiki = cuisine_scrap()
+distinct_categories = list(data_expanded['categories'].unique())
+
+count = 0
+for category in distinct_categories:
+    if category.lower() in cuisines_wiki or category.lower() + ' cuisine' in cuisines_wiki:
+        count += 1
+        
+print(f'Cuisines inside the wiki: {count}/{len(distinct_categories)}')
+
+
 #%% Postal code
 
 grouped_data = data[['postal_code', 'sentiment_score']].groupby('postal_code').mean()
@@ -247,94 +348,3 @@ m.save('happiest_saddest_restaurants_map.html')
 m
 
 
-#%% Categories
-
-# Split the categories into separate rows
-data_expanded = data.assign(categories=data['categories'].str.split(', ')).explode('categories')
-
-# Group by category and calculate count, mean, and standard deviation of sentiment_score
-category_sentiment = data_expanded.groupby('categories').agg(
-    count=('categories', 'size'),
-    sentiment_score=('sentiment_score', 'mean'),
-    sentiment_score_sd=('sentiment_score', 'std'),
-    sentiment_score_min=('sentiment_score', 'min'),
-    sentiment_score_max=('sentiment_score', 'max')
-).reset_index()
-
-#%% Categories
-
-# Split the categories into separate rows
-data_expanded = data.assign(categories=data['categories'].str.split(', ')).explode('categories')
-
-# Group by category and calculate count, mean, and standard deviation of sentiment_score
-category_sentiment = data_expanded.groupby('categories').agg(
-    count=('business_id', 'nunique'),
-    sentiment_score=('sentiment_score', 'mean'),
-    sentiment_score_sd=('sentiment_score', 'std')
-    # sentiment_score_min=('sentiment_score', 'min'),
-    # sentiment_score_max=('sentiment_score', 'max')
-).reset_index()
-
-#%% plot to find optimal threshold
-
-# Set the threshold range (you can modify this as needed)
-threshold_range = range(1, 1000)
-
-# List to store the number of categories above each threshold
-num_categories = []
-
-# Loop through thresholds and count categories that meet the condition
-for threshold in threshold_range:
-    # Filter the categories with count >= threshold
-    filtered_categories = category_sentiment[category_sentiment['count'] >= threshold]
-    
-    # Append the number of categories to the list
-    num_categories.append(len(filtered_categories))
-
-# Plot the number of categories vs threshold
-plt.figure(figsize=(10, 6))
-plt.plot(threshold_range, num_categories, marker='o', linestyle='-', color='purple')
-plt.title("Number of Categories Above Threshold vs Threshold Value", fontweight='bold')
-plt.xlabel("Threshold (Minimum Number of Reviews)", fontweight='bold')
-plt.ylabel("Number of Categories", fontweight='bold')
-plt.grid(True)
-plt.show()
-
-#%% Top/Bottom 10 with that threshold
-
-threshold = 200
-filtered_categories = category_sentiment[category_sentiment['count'] >= threshold]
-sorted_data = filtered_categories.groupby('categories').mean().sort_values('sentiment_score', ascending=False)
-
-print("\nTop 10 Happiest Restaurants:")
-print(sorted_data.head(10))
-
-print("\nTop 10 Saddest Restaurants:")
-print(sorted_data.tail(10))
-
-#%% LKouvain analysis
-
-# Scatter plot for sentiment score and louvain_community
-plt.figure(figsize=(10, 6))
-plt.scatter(data['louvain_community'], data['sentiment_score'], alpha=0.6, color='mediumseagreen', edgecolor='black')
-plt.title("Sentiment Score vs Louvain Community", fontweight='bold')
-plt.xlabel("Louvain Community", fontweight='bold')
-plt.ylabel("Sentiment Score", fontweight='bold')
-plt.show()
-
-# Calculate the correlation between sentiment score and louvain_community
-correlation = data[['louvain_community', 'sentiment_score']].corr().iloc[0, 1]
-print(f"Correlation between sentiment score and louvain community: {correlation:.2f}")
-
-
-#%%
-
-cuisines_wiki = cuisine_scrap()
-distinct_categories = list(data_expanded['categories'].unique())
-
-count = 0
-for category in distinct_categories:
-    if category.lower() in cuisines_wiki or category.lower() + ' cuisine' in cuisines_wiki:
-        count += 1
-        
-print(f'Cuisines inside the wiki: {count}/{len(distinct_categories)}')
