@@ -82,15 +82,17 @@ plt.show()
 
 #%% Top/Bottom 10 restaurants
 
-# These are the results without groupping by, so we have individual reviews
-# Top 10 saddest and happiest restaurants
-sorted_data = data[['name', 'sentiment_score']].groupby('name').mean().sort_values('sentiment_score', ascending=False)
+grouped_data = data[['business_id', 'sentiment_score']].groupby('business_id').mean()
+merged_data = grouped_data.merge(data[['business_id', 'name']].drop_duplicates(), on='business_id')
+sorted_data = merged_data.sort_values('sentiment_score', ascending=False)
 
+# Display the top 10 happiest and saddest restaurants
 print("\nTop 10 Happiest Restaurants:")
-print(sorted_data.head(10))
+print(sorted_data[['name', 'sentiment_score']].head(10))
 
 print("\nTop 10 Saddest Restaurants:")
-print(sorted_data.tail(10))
+print(sorted_data[['name', 'sentiment_score']].tail(10))
+
 
 """
 We have to take into account that the highest value for sentiment (top 1) is 8.5 instead of 10 and the lowest is 1.3 instead of 0. AVERAGE VALUES
